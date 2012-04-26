@@ -69,7 +69,7 @@ public class TaxAndPriceCalculator {
 		}
 
 		System.out.println("Output:");
-		System.out.println(cart.getCartStr());
+		System.out.println(cart.cartStr());
 	}
 
 	public static void main(String[] args) {

@@ -11,4 +11,9 @@ public class StringUtils {
 	 * Empty string.
 	 */
 	public static final String EMPTY_STRING = " ";
+	
+	/*
+	 * Blank string.
+	 */
+	public static final String BLANK = "";
 }

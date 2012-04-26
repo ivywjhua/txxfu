@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wjhua.twquiz.utils.StringUtils;
+import org.wjhua.twquiz.report.HtmlStatement;
+import org.wjhua.twquiz.report.TextStatement;
 
 /**
  * Cart, may include multiple items.
@@ -28,6 +29,11 @@ public class Cart implements Serializable {
 		items.add(item);
 		return item;
 	}
+
+	public List<CartItem> getItems() {
+		return items;
+	}
+
 
 	/**
 	 * Get total sales taxes from items.
@@ -57,17 +63,12 @@ public class Cart implements Serializable {
 	 * Get output string from items.
 	 * @return cart output string.
 	 */
-	public String getCartStr() {
-		StringBuilder outputBuilder = new StringBuilder();
-		for (CartItem item : items) {
-			outputBuilder.append(item.getCartItemStr()).append(
-					StringUtils.NEW_LINE_STR);
-		}
-		outputBuilder.append("Sales Taxes: ").append(getTotalSalesTaxes())
-				.append(StringUtils.NEW_LINE_STR);
-		outputBuilder.append("Total: ").append(getTotalPriceWithTax())
-				.append(StringUtils.NEW_LINE_STR);
-		return outputBuilder.toString();
+	public String cartStr(){
+		return new TextStatement().statement(this);
+	}
+	
+	public String htmlCartStr(){
+		return new HtmlStatement().statement(this);
 	}
 
 }
