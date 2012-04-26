@@ -19,7 +19,7 @@ public class ItemTest {
 	@Test
 	public void test_01_s() {
 		String itemStr = "1 book at 12.49";
-		Item item = new Item(itemStr);
+		CartItem item = new CartItem(itemStr);
 		assertEquals(BigDecimal.ZERO, item.getSalesTax());
 		assertEquals(new BigDecimal("12.49"), item.getPriceWithTax());
 	}
@@ -27,7 +27,7 @@ public class ItemTest {
 	@Test
 	public void test_02_s() {
 		String itemStr = "10 book at 12.49";
-		Item item = new Item(itemStr);
+		CartItem item = new CartItem(itemStr);
 		assertEquals(BigDecimal.ZERO, item.getSalesTax());
 		assertEquals(new BigDecimal("124.90"), item.getPriceWithTax());
 	}
@@ -35,12 +35,12 @@ public class ItemTest {
 	@Test
 	public void test_03_s() {
 		String itemStr = "1 music CD at 14.99";
-		Item item = new Item(itemStr);
+		CartItem item = new CartItem(itemStr);
 		assertEquals(new BigDecimal("1.50"), item.getSalesTax());
 		assertEquals(new BigDecimal("16.49"), item.getPriceWithTax());
 
 		itemStr = "5 music CD at 14.99";
-		item = new Item(itemStr);
+		item = new CartItem(itemStr);
 		assertEquals(new BigDecimal("7.50"), item.getSalesTax());
 		assertEquals(new BigDecimal("82.45"), item.getPriceWithTax());
 	}
@@ -48,7 +48,7 @@ public class ItemTest {
 	@Test
 	public void test_04_s() {
 		String itemStr = "8 imported bottle of perfume at 47.50";
-		Item item = new Item(itemStr);
+		CartItem item = new CartItem(itemStr);
 		assertEquals(new BigDecimal("57.20"), item.getSalesTax());
 		assertEquals(new BigDecimal("437.20"), item.getPriceWithTax());
 
@@ -58,7 +58,7 @@ public class ItemTest {
 	@Test
 	public void test_11_s() {
 		String itemStr = "8 imported bottle of perfume at 47.50";
-		Item item = new Item(itemStr);
+		CartItem item = new CartItem(itemStr);
 		assertEquals("8 imported bottle of perfume: 437.20",
 				item.getItemOutputStr());
 	}

@@ -12,7 +12,7 @@ import org.wjhua.twquiz.utils.StringUtils;
  * @author jinhua
  * 
  */
-public class Item implements Serializable {
+public class CartItem implements Serializable {
 
 	/**
 	 * 
@@ -28,17 +28,7 @@ public class Item implements Serializable {
 
 	private String itemStr;
 
-	/*
-	 * item sales tax
-	 */
-	// private BigDecimal salesTax;
-
-	/*
-	 * item price with tax
-	 */
-	// private BigDecimal priceWithTax;
-
-	public Item(String itemStr) {
+	public CartItem(String itemStr) {
 		super();
 		this.itemStr = itemStr;
 		parseItemStr();
@@ -77,6 +67,10 @@ public class Item implements Serializable {
 
 	public int getGoodsCount() {
 		return goodsCount;
+	}
+
+	public void setGoodsCount(int goodsCount) {
+		this.goodsCount = goodsCount;
 	}
 
 	public String getItemStr() {

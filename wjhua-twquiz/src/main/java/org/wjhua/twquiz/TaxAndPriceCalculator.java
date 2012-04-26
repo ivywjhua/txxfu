@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import org.wjhua.twquiz.domain.Cart;
-import org.wjhua.twquiz.domain.Item;
+import org.wjhua.twquiz.domain.CartItem;
 import org.wjhua.twquiz.utils.IOUtils;
 
 /**
@@ -41,7 +41,7 @@ public class TaxAndPriceCalculator {
 			itemStr = reader.readLine();
 			Cart cart = new Cart();
 			while (null != itemStr && !itemStr.isEmpty()) {
-				Item item = new Item(itemStr);
+				CartItem item = new CartItem(itemStr);
 				cart.addItem(item);
 				itemStr = reader.readLine();
 			}
@@ -63,7 +63,7 @@ public class TaxAndPriceCalculator {
 
 		Cart cart = new Cart();
 		while (null != itemStr && !itemStr.isEmpty()) {
-			Item item = new Item(itemStr);
+			CartItem item = new CartItem(itemStr);
 			cart.addItem(item);
 			itemStr = scan.nextLine();
 		}

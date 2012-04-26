@@ -8,10 +8,10 @@ import org.junit.Test;
 
 public class CartTest {
 
-	private Item item1 = new Item("1 imported bottle of perfume at 27.99");
-	private Item item2 = new Item("1 bottle of perfume at 18.99");
-	private Item item3 = new Item("1 packet of headache pills at 9.75");
-	private Item item4 = new Item("1 box of imported chocolates at 11.25");
+	private CartItem item1 = new CartItem("1 imported bottle of perfume at 27.99");
+	private CartItem item2 = new CartItem("1 bottle of perfume at 18.99");
+	private CartItem item3 = new CartItem("1 packet of headache pills at 9.75");
+	private CartItem item4 = new CartItem("1 box of imported chocolates at 11.25");
 
 	@Test
 	public void test_01_s() {

@@ -22,9 +22,9 @@ public class Cart implements Serializable {
 	/*
 	 * Item array list.
 	 */
-	private List<Item> items = new ArrayList<Item>();
+	private List<CartItem> items = new ArrayList<CartItem>();
 
-	public Item addItem(Item item) {
+	public CartItem addItem(CartItem item) {
 		items.add(item);
 		return item;
 	}
@@ -35,7 +35,7 @@ public class Cart implements Serializable {
 	 */
 	public BigDecimal getTotalSalesTaxes() {
 		BigDecimal totalSalesTaxes = BigDecimal.ZERO;
-		for (Item item : items) {
+		for (CartItem item : items) {
 			totalSalesTaxes = totalSalesTaxes.add(item.getSalesTax());
 		}
 		return totalSalesTaxes;
@@ -47,7 +47,7 @@ public class Cart implements Serializable {
 	 */
 	public BigDecimal getTotalPriceWithTax() {
 		BigDecimal totalPriceWithTax = BigDecimal.ZERO;
-		for (Item item : items) {
+		for (CartItem item : items) {
 			totalPriceWithTax = totalPriceWithTax.add(item.getPriceWithTax());
 		}
 		return totalPriceWithTax;
@@ -59,7 +59,7 @@ public class Cart implements Serializable {
 	 */
 	public String getCartOutputStr() {
 		StringBuilder outputBuilder = new StringBuilder();
-		for (Item item : items) {
+		for (CartItem item : items) {
 			outputBuilder.append(item.getItemOutputStr()).append(
 					StringUtils.NEW_LINE_STR);
 		}
