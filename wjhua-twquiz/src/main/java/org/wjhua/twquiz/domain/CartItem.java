@@ -3,7 +3,7 @@ package org.wjhua.twquiz.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import org.wjhua.twquiz.parser.ItemStrParser;
+import org.wjhua.twquiz.parser.CartItemParser;
 import org.wjhua.twquiz.utils.StringUtils;
 
 /**
@@ -41,7 +41,7 @@ public class CartItem implements Serializable {
 	 */
 	private void parseItemStr() {
 		// parse item
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		goods = new Goods(parser.getGoodsName(), parser.getGoodsPrice(),
 				parser.isExemptGoods(), parser.isImportedGoods());
 		goodsCount = parser.getGoodsCount();

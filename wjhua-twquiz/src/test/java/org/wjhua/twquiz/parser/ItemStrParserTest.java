@@ -19,7 +19,7 @@ public class ItemStrParserTest {
 	public void test_011_f() {
 		thrown.expect(NullPointerException.class);
 		@SuppressWarnings("unused")
-		ItemStrParser parser = new ItemStrParser(null);
+		CartItemParser parser = new CartItemParser(null);
 	}
 
 	@Test
@@ -27,21 +27,21 @@ public class ItemStrParserTest {
 		String itemStr = "1book at 12.49";
 		thrown.expect(FormatException.class);
 		@SuppressWarnings("unused")
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 	}
 
 	@Test
 	public void test_013_s() {
 		String itemStr = "1 book at 12.49";
 		@SuppressWarnings("unused")
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 	}
 
 	// get goods count test
 	@Test
 	public void test_021_f() {
 		String itemStr = "1a book at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		thrown.expect(FormatException.class);
 		parser.getGoodsCount();
 	}
@@ -49,7 +49,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_022_f() {
 		String itemStr = "0 book at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		thrown.expect(FormatException.class);
 		parser.getGoodsCount();
 	}
@@ -57,7 +57,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_023_f() {
 		String itemStr = "10 book at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(10, parser.getGoodsCount());
 	}
 
@@ -65,7 +65,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_031_f() {
 		String itemStr = "10 book at 12.49a";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		thrown.expect(FormatException.class);
 		parser.getGoodsPrice();
 	}
@@ -73,7 +73,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_032_f() {
 		String itemStr = "10 book at -12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		thrown.expect(FormatException.class);
 		parser.getGoodsPrice();
 	}
@@ -81,7 +81,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_033_f() {
 		String itemStr = "10 book at 12.499";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		thrown.expect(FormatException.class);
 		parser.getGoodsPrice();
 	}
@@ -89,14 +89,14 @@ public class ItemStrParserTest {
 	@Test
 	public void test_034_s() {
 		String itemStr = "10 book at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(new BigDecimal("12.49"), parser.getGoodsPrice());
 	}
 
 	@Test
 	public void test_035_s() {
 		String itemStr = "10 book at 12";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(new BigDecimal("12"), parser.getGoodsPrice());
 	}
 
@@ -104,14 +104,14 @@ public class ItemStrParserTest {
 	@Test
 	public void test_041_s() {
 		String itemStr = "10 imported bottle of perfume at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals("imported bottle of perfume", parser.getGoodsName());
 	}
 
 	@Test
 	public void test_042_s() {
 		String itemStr = "10 s at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals("s", parser.getGoodsName());
 	}
 
@@ -119,14 +119,14 @@ public class ItemStrParserTest {
 	@Test
 	public void test_051_s() {
 		String itemStr = "10 s at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertFalse(parser.isExemptGoods());
 	}
 	
 	@Test
 	public void test_052_s() {
 		String itemStr = "10 packet of headache pills at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertTrue(parser.isExemptGoods());
 	}
 
@@ -134,14 +134,14 @@ public class ItemStrParserTest {
 	@Test
 	public void test_061_s() {
 		String itemStr = "10 packet of headache pills at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertFalse(parser.isImportedGoods());
 	}
 	
 	@Test
 	public void test_062_s() {
 		String itemStr = "10 box of imported chocolates at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertTrue(parser.isImportedGoods());
 		assertTrue(parser.isExemptGoods());
 	}
@@ -150,7 +150,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_1() {
 		String itemStr = "1 book at 12.49";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(1, parser.getGoodsCount());
 		assertEquals(new BigDecimal("12.49"), parser.getGoodsPrice());
 		assertEquals("book", parser.getGoodsName());
@@ -161,7 +161,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_2() {
 		String itemStr = "1 music CD at 14.99";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(1, parser.getGoodsCount());
 		assertEquals(new BigDecimal("14.99"), parser.getGoodsPrice());
 		assertEquals("music CD", parser.getGoodsName());
@@ -172,7 +172,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_3() {
 		String itemStr = "1 imported box of chocolates at 10.00";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(1, parser.getGoodsCount());
 		assertEquals(new BigDecimal("10.00"), parser.getGoodsPrice());
 		assertEquals("imported box of chocolates", parser.getGoodsName());
@@ -183,7 +183,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_4() {
 		String itemStr = "1 packet of headache pills at 9.75";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(1, parser.getGoodsCount());
 		assertEquals(new BigDecimal("9.75"), parser.getGoodsPrice());
 		assertEquals("packet of headache pills", parser.getGoodsName());
@@ -194,7 +194,7 @@ public class ItemStrParserTest {
 	@Test
 	public void test_5() {
 		String itemStr = "1 box of imported chocolates at 11.25";
-		ItemStrParser parser = new ItemStrParser(itemStr);
+		CartItemParser parser = new CartItemParser(itemStr);
 		assertEquals(1, parser.getGoodsCount());
 		assertEquals(new BigDecimal("11.25"), parser.getGoodsPrice());
 		assertEquals("box of imported chocolates", parser.getGoodsName());
