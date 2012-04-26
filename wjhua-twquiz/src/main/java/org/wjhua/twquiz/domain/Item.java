@@ -31,12 +31,12 @@ public class Item implements Serializable {
 	/*
 	 * item sales tax
 	 */
-	private BigDecimal salesTax;
+	// private BigDecimal salesTax;
 
 	/*
 	 * item price with tax
 	 */
-	private BigDecimal priceWithTax;
+	// private BigDecimal priceWithTax;
 
 	public Item(String itemStr) {
 		super();
@@ -55,11 +55,6 @@ public class Item implements Serializable {
 		goods = new Goods(parser.getGoodsName(), parser.getGoodsPrice(),
 				parser.isExemptGoods(), parser.isImportedGoods());
 		goodsCount = parser.getGoodsCount();
-
-		// tax, price
-		BigDecimal countBigDecimal = new BigDecimal(getGoodsCount());
-		salesTax = goods.getSalesTax().multiply(countBigDecimal);
-		priceWithTax = goods.getPriceWithTax().multiply(countBigDecimal);
 	}
 
 	/**
@@ -89,11 +84,13 @@ public class Item implements Serializable {
 	}
 
 	public BigDecimal getSalesTax() {
-		return salesTax;
+		BigDecimal countBigDecimal = new BigDecimal(getGoodsCount());
+		return goods.getSalesTax().multiply(countBigDecimal);
 	}
 
 	public BigDecimal getPriceWithTax() {
-		return priceWithTax;
+		BigDecimal countBigDecimal = new BigDecimal(getGoodsCount());
+		return goods.getPriceWithTax().multiply(countBigDecimal);
 	}
 
 }

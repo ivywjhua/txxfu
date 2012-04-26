@@ -10,7 +10,7 @@ import org.wjhua.twquiz.utils.AmountUtils;
  * Goods domain object.
  * 
  * @author jinhua
- *
+ * 
  */
 public class Goods implements Serializable {
 
@@ -30,16 +30,6 @@ public class Goods implements Serializable {
 
 	private boolean isImported;
 
-	/*
-	 * tax rate, tax , price
-	 */
-	private BigDecimal taxRate;
-
-	private BigDecimal salesTax;
-
-	private BigDecimal priceWithTax;
-	
-
 	public Goods(String name, BigDecimal price, boolean isExempt,
 			boolean isImported) {
 		super();
@@ -47,23 +37,18 @@ public class Goods implements Serializable {
 		this.price = price;
 		this.isExempt = isExempt;
 		this.isImported = isImported;
-
-		taxRate =TaxRateCalculator.calcTaxRate(this);
-		calculateGoodsTax();
-		priceWithTax = price.add(salesTax);
 	}
 
 	/**
 	 * Calculate goods tax.
 	 */
-	private void calculateGoodsTax() {
+	private BigDecimal calculateGoodsTax(BigDecimal taxRate) {
 		BigDecimal tax = BigDecimal.ZERO;
-		BigDecimal taxRate = getTaxRate();
 		if (taxRate.compareTo(BigDecimal.ZERO) > 0) {
 			tax = getPrice().multiply(taxRate);
 			tax = AmountUtils.roundAmount(tax);
 		}
-		salesTax = tax;
+		return tax;
 	}
 
 	public String getName() {
@@ -82,16 +67,19 @@ public class Goods implements Serializable {
 		return isImported;
 	}
 
+	/*
+	 * tax rate, tax , price
+	 */
 	public BigDecimal getTaxRate() {
-		return taxRate;
+		return TaxRateCalculator.calcTaxRate(this);
 	}
 
 	public BigDecimal getSalesTax() {
-		return salesTax;
+		return calculateGoodsTax(getTaxRate());
 	}
 
 	public BigDecimal getPriceWithTax() {
-		return priceWithTax;
+		return price.add(getSalesTax());
 	}
 
 }
