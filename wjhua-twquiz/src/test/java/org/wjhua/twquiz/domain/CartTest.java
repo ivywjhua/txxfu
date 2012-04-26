@@ -19,22 +19,22 @@ public class CartTest {
 		cart.addItem(item1);
 		assertEquals(new BigDecimal("4.20"), cart.getTotalSalesTaxes());
 		assertEquals(new BigDecimal("32.19"), cart.getTotalPriceWithTax());
-		System.out.println(cart.getCartOutputStr());
+		System.out.println(cart.getCartStr());
 		
 		cart.addItem(item2);
 		assertEquals(new BigDecimal("6.10"), cart.getTotalSalesTaxes());
 		assertEquals(new BigDecimal("53.08"), cart.getTotalPriceWithTax());
-		System.out.println(cart.getCartOutputStr());
+		System.out.println(cart.getCartStr());
 
 		cart.addItem(item4);
 		assertEquals(new BigDecimal("6.70"), cart.getTotalSalesTaxes());
 		assertEquals(new BigDecimal("64.93"), cart.getTotalPriceWithTax());
-		System.out.println(cart.getCartOutputStr());
+		System.out.println(cart.getCartStr());
 
 		cart.addItem(item3);
 		assertEquals(new BigDecimal("6.70"), cart.getTotalSalesTaxes());
 		assertEquals(new BigDecimal("74.68"), cart.getTotalPriceWithTax());
-		System.out.println(cart.getCartOutputStr());
+		System.out.println(cart.getCartStr());
 	}
 
 }

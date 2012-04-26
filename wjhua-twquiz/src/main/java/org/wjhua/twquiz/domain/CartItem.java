@@ -52,7 +52,7 @@ public class CartItem implements Serializable {
 	 * 
 	 * @return item output string.
 	 */
-	public String getItemOutputStr() {
+	public String getCartItemStr() {
 		return getGoodsCount() + StringUtils.EMPTY_STRING + goods.getName()
 				+ ": " + getPriceWithTax();
 	}

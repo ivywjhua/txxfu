@@ -42,7 +42,7 @@ public class TaxAndPriceCalculatorTest {
 			assertEquals(salesTax, cart.getTotalSalesTaxes());
 			assertEquals(total, cart.getTotalPriceWithTax());
 			System.out.println("Output:");
-			System.out.println(cart.getCartOutputStr());
+			System.out.println(cart.getCartStr());
 		} finally {
 			IOUtils.closeQuietly(in);
 		}

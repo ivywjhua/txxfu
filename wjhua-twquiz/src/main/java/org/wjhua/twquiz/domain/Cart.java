@@ -57,10 +57,10 @@ public class Cart implements Serializable {
 	 * Get output string from items.
 	 * @return cart output string.
 	 */
-	public String getCartOutputStr() {
+	public String getCartStr() {
 		StringBuilder outputBuilder = new StringBuilder();
 		for (CartItem item : items) {
-			outputBuilder.append(item.getItemOutputStr()).append(
+			outputBuilder.append(item.getCartItemStr()).append(
 					StringUtils.NEW_LINE_STR);
 		}
 		outputBuilder.append("Sales Taxes: ").append(getTotalSalesTaxes())

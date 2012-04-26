@@ -60,7 +60,7 @@ public class CartItemTest {
 		String itemStr = "8 imported bottle of perfume at 47.50";
 		CartItem item = new CartItem(itemStr);
 		assertEquals("8 imported bottle of perfume: 437.20",
-				item.getItemOutputStr());
+				item.getCartItemStr());
 	}
 
 }
