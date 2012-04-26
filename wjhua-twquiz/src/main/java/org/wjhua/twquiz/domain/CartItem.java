@@ -65,6 +65,10 @@ public class CartItem implements Serializable {
 		return goods;
 	}
 
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
+
 	public int getGoodsCount() {
 		return goodsCount;
 	}
