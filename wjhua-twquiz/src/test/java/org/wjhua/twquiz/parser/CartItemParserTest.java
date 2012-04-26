@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.wjhua.twquiz.exception.FormatException;
 
-public class ItemStrParserTest {
+public class CartItemParserTest {
 
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();

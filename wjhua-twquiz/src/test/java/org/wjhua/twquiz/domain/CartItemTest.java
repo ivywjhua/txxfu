@@ -13,7 +13,7 @@ import org.junit.Test;
  * @author wangjinhua
  * 
  */
-public class ItemTest {
+public class CartItemTest {
 
 	// tax & price with tax test
 	@Test
